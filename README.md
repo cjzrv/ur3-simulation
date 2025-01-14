@@ -32,28 +32,24 @@ To simulate the robot launch the following:
   ```
    roslaunch ur_gripper_gazebo ur_gripper_85_cubes.launch ur_robot:=ur3 grasp_plugin:=1
   ```
-or using ur3e:
-  ```
-   roslaunch ur_gripper_gazebo ur_gripper_hande_cubes.launch ur_robot:=ur3e grasp_plugin:=1
-  ```
 
 You can then send commands to the joints or to the gripper.
 
 An example of sending joints values to the robot can be executed as follows:
   ```
-   rosrun ur_control sim_controller_examples.py -m
+   rosrun ur_control controller_examples.py -m
   ```
-To change the values of the joints, the file `sim_controller_examples.py` must be modified.
+To change the values of the joints, the file `controller_examples.py` must be modified.
 
 Similarly, the script include examples to control the robot's end-effector position, gripper and an example of performing grasping.
 Execute the following command to see the available examples.
   ```
-   rosrun ur_control sim_controller_examples.py --help
+   rosrun ur_control controller_examples.py --help
   ```
 
 For testing the grasping examples you need to explicitly specify that the gripper is going to be loaded, e.g.,
   ```
-   rosrun ur_control sim_controller_examples.py --gripper --grasp_naive
+   rosrun ur_control controller_examples.py --grasp_plugin
   ```
 
 The grasp_plugin example uses this [plugin](https://github.com/pal-robotics/gazebo_ros_link_attacher), and requires gazebo to be launched with the grasp_plugin parameter as `True`.
