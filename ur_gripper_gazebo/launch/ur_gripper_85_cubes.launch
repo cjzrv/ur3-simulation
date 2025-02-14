@@ -35,10 +35,8 @@
     <arg name="ur_robot" value="$(arg ur_robot)"/>
     <arg name="grasp_plugin" value="$(arg grasp_plugin)"/>
   </include>
-  <!-- Spawn robot in gazebo (and move it upwards):
-       better initial values should be -2.355 and 1.57 but the robot does
-       something strange when unpausing it
-  -->
+
+  <!-- Spawn robot in gazebo -->
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model"
         args="-urdf -param robot_description -model robot 
               -x 0.11 -z 0.69 -Y -1.5707
@@ -50,5 +48,10 @@
               -unpause"
         output="screen" />
 
+  <!-- Spawn virtual camera in gazebo -->
+  <node name="spawn_camera_model" pkg="gazebo_ros" type="spawn_model"
+        args="-file $(find ur_gripper_gazebo)/urdf/camera.urdf -urdf -model camera -x 0.73 -y 0 -z 1.365 -R 0.015 -P 1.105 -Y 3.137"
+        output="screen" />
 
 </launch>
+
